@@ -1,0 +1,93 @@
+{
+  "name": "angular-boilerplate",
+  "version": "1.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "lint:css": "stylelint **/*.{css,scss,sass}",
+    "e2e": "ng e2e",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:e2e": "npx cypress open",
+    "serve:staging": "ng serve --configuration=staging",
+    "serve:prod": "ng serve --configuration=production",
+    "build:staging": "ng build --prod --configuration=staging",
+    "build:prod": "ng build --prod --configuration=production",
+    "generate:stats": "ng build --prod --stats-json",
+    "start:analyzer": "webpack-bundle-analyzer angular-boilerplate/stats.json",
+    "analyzer": "npm run generate:stats && npm run start:analyzer"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular-devkit/architect": "^0.1300.3",
+    "@angular-devkit/schematics": "^13.0.3",
+    "@angular/animations": "^13.0.2",
+    "@angular/common": "^13.0.2",
+    "@angular/compiler": "^13.0.2",
+    "@angular/core": "^13.0.2",
+    "@angular/forms": "^13.0.2",
+    "@angular/platform-browser": "^13.0.2",
+    "@angular/platform-browser-dynamic": "^13.0.2",
+    "@angular/router": "^13.0.2",
+    "@sentry/angular": "^6.15.0",
+    "@sentry/tracing": "^6.15.0",
+    "npm-check-updates": "^12.0.2",
+    "rxjs": "~7.4.0",
+    "tslib": "^2.3.1",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-builders/jest": "^13.0.0",
+    "@angular-devkit/build-angular": "^13.0.3",
+    "@angular-eslint/builder": "13.0.1",
+    "@angular-eslint/eslint-plugin": "13.0.1",
+    "@angular-eslint/eslint-plugin-template": "13.0.1",
+    "@angular-eslint/schematics": "13.0.1",
+    "@angular-eslint/template-parser": "13.0.1",
+    "@angular/cli": "^13.0.3",
+    "@angular/compiler-cli": "^13.0.2",
+    "@types/jasmine": "~3.10.2",
+    "@types/jasminewd2": "~2.0.10",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.9",
+    "@typescript-eslint/eslint-plugin": "5.4.0",
+    "@typescript-eslint/parser": "5.4.0",
+    "codelyzer": "^6.0.2",
+    "cypress": "^9.0.0",
+    "eslint": "^8.2.0",
+    "eslint-plugin-import": "2.25.3",
+    "eslint-plugin-jsdoc": "37.0.3",
+    "eslint-plugin-prefer-arrow": "1.2.3",
+    "eslint-plugin-react": "latest",
+    "husky": "^7.0.4",
+    "jasmine-core": "~3.10.1",
+    "jasmine-spec-reporter": "~7.0.0",
+    "jest": "^27.3.1",
+    "jest-preset-angular": "^11.0.0",
+    "prettier": "^2.4.1",
+    "pretty-quick": "^3.1.2",
+    "protractor": "~7.0.0",
+    "stylelint": "^14.1.0",
+    "stylelint-config-standard": "^24.0.0",
+    "ts-node": "~10.4.0",
+    "tslint": "~6.1.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.4.4",
+    "webpack-bundle-analyzer": "^4.5.0"
+  },
+  "lint-staged": {
+    "*.css": [
+      "npx stylelint **/*.scss",
+      "stylelint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && npm run lint:css && ng lint && ng test"
+    }
+  }
+}
